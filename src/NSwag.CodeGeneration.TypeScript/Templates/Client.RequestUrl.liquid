@@ -54,7 +54,7 @@ else if ({{ parameter.VariableName }} !== undefined)
 {%     elseif parameter.IsArray -%}
     {{ parameter.VariableName }} && {{ parameter.VariableName }}.forEach(item => { url_ += "{{ parameter.Name }}=" + encodeURIComponent("" + item) + "&"; });
 {%     else -%}
-    url_ += "{{ parameter.Name }}=" + encodeURIComponent("" + ({{ parameter.VariableName }} === null || {{ parameter.VariableName }} === undefined ? '' : {{ parameter.VariableName }})) + "&"; 
+    url_ += "{{ parameter.Name }}=" + encodeURIComponent("" + ({{ parameter.VariableName }} === null ? '' : {{ parameter.VariableName }})) + "&"; 
 {%     endif -%}
 {% endfor -%}
 url_ = url_.replace(/[?&]$/, "");
