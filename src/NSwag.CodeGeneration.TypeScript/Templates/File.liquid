@@ -85,14 +85,14 @@ namespace {{ Namespace }} {
 /**
  *  Enum helpers
  */
-export type EnumType = {[key: string | number]: string | number};
-export type EnumKey = [keyof EnumType];
+export type EnumType = {[key: string]: number} | {[key: number]: string};
+export type EnumKey = string | number;
 
 export function getReadableEnumValue(value: EnumKey, forEnum: EnumType): string {
     if (typeof value === 'number' && forEnum[value] !== undefined) {
         return splitCamelCase(forEnum[value], true);
     }
-    return splitCamelCase(value, true);
+    return splitCamelCase(<string> value, true);
 }
 
 /**
